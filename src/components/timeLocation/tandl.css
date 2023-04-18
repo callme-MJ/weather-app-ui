@@ -1,0 +1,26 @@
+.tlCDate{
+    display: flex; 
+    margin-top: 1.25rem;
+    justify-content: center; 
+    align-items: center; 
+}
+.tlCDate p{
+    color: white;
+    font-size: 1.25rem;
+    line-height: 1rem;
+    font-weight: 300;
+}
+.tlLocation p{
+    color: white;
+    font-size: 1.875rem;
+    line-height: 1.25rem; 
+    font-weight: 500; 
+
+}
+
+.tlLocation {
+    display: flex; 
+    margin-bottom: 0.25rem;
+    justify-content: center; 
+    align-items: center;
+}
