@@ -1,14 +1,14 @@
 import React from 'react'
 import './tandl.css'
 
-function TandL() {
+function TandL({data}) {
   return (
     <div className='tlContainer'>
         <div className="tlCDate">
-            <p>Tueday, April 2023 | Local time: 9:32 PM</p>
+            <p>{data?.date}<span className='localTime'>  (local Time)</span></p>
         </div>
         <div className="tlLocation">
-            <p>Cochi, IN</p>
+            <p>{data?.weatherData?.name}, {data?.weatherData?.country}</p>
         </div>
     </div>
   )
