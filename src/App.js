@@ -17,6 +17,7 @@ function App() {
   
   const city = useSelector((state)=> state.city.name)
   const format = useSelector((state)=> state.format.name)
+  console.log(city, format);
   
   useEffect(() => {
     const fetchWeather = async () => {
