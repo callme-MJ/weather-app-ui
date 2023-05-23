@@ -1,17 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { UilSearch, UilLocationPoint } from '@iconscout/react-unicons'
 import './searchBar.css'
-import { useDispatch } from 'react-redux'
-import { update } from '../../redux/citySlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateCity } from '../../redux/citySlice'
+import { updateType } from '../../redux/typeSlice'
+import { fetchWeather } from '../../redux/weatherSlice'
 
 function SearchBar({setQuery, unit, setUnit}) {
 
   const [city , setCity] = useState('')
   const dispatch = useDispatch()
-
+  
+  
   const handleSearch = (e) => {
     e.preventDefault()
-    dispatch(update(city))
+    dispatch(updateCity(city))
+    dispatch(fetchWeather(city))
     setQuery(city)
   }
   const handleUnit = (e) => {
@@ -20,6 +24,7 @@ function SearchBar({setQuery, unit, setUnit}) {
     if (unit !== selectedUnit) {
       setUnit(selectedUnit)
     }
+    dispatch(updateType(selectedUnit))
   }
   const handleLocation = (e) => {
     e.preventDefault()
@@ -30,7 +35,7 @@ function SearchBar({setQuery, unit, setUnit}) {
       fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5b61522c47c162cbedbecc5b128a1ccf&units=metric`)
       .then((res) => res.json())
       .then((data) => {
-        dispatch(update(data.name))
+        dispatch(updateCity(data.name))
         setQuery(data.name)
       })
     })

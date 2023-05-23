@@ -19,6 +19,7 @@ function App() {
   const format = useSelector((state)=> state.format.name)
   console.log(city, format);
   
+
   useEffect(() => {
     const fetchWeather = async () => {
       const weatherData = await axios.get(`weather?q=${query}&units=${unit}`)
